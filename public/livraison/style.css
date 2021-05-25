@@ -1,0 +1,17 @@
+body {
+    padding-top: 60px;
+}
+
+#content-pizza #add-cart {
+    width: 50%;
+    margin-left: 27%;
+    /*height: 100vh;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+button#add-cart {
+    width: 1%;
+}

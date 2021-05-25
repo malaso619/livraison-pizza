@@ -1,0 +1,47 @@
+/node_modules
+/public/hot
+/public/bootstrap
+/public/lib
+/public/others
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+
+#My OwnConfig
+################ dependencies to ignore some of files #######################
+/venv
+/.idea
+################ Logs and databases ####################
+######################
+*.log
+*.sql
+############## OS generated files #################
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+#################Images############
+*.jpg
+*.png
+*.pyc 
+*.xml 
+*.svg
+*.log
+*.lock
+*.tmp
+*.class
+/.idea
+/__pycache__
+.idea/workspace.xml

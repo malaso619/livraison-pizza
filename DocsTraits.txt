@@ -1,0 +1,1 @@
+Le traits est concept poo sur php pour eviter la duplication des methodes dans une classes
