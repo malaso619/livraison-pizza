@@ -1,0 +1,12 @@
+1- Allowed memory size of 1610612736 bytes exhausted (tried to allocate 4096 bytes) in phar
+
+    Solution:
+        -change in the php.ini file, saved it & restarted apache :
+                 Changed memory_limit=512M to memory_limit=-1
+
+ 2-Lors de la modification dans le fichier composer.json il faut utiliser ce commande sinon il ne prends pas en compte:
+        composer update
+
+ 3--"bumbummen99/shoppingcart": "^4.0",
+
+ 4-Composer remove pakage to uninstall

@@ -16,6 +16,8 @@
 					</p>
 
 				</li>
+                <li><a href="{{ route('cart_path') }}"><span class="glyphicon glyphicon-shopping-cart" style="color:white;"></span> Cart</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				{{--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sig n Up</a></li>
                   <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>--}}
 			</ul>

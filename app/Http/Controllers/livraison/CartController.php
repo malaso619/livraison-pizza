@@ -4,6 +4,7 @@ namespace App\Http\Controllers\livraison;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Cart;
 
 class CartController extends Controller
 {
@@ -15,6 +16,14 @@ class CartController extends Controller
     public function index()
     {
         //
+//        Cart::add('192ao12', 'Product 1', 1, 9.99);
+//        Cart::add('1239ad0', 'Product 2', 2, 5.95, ['size' => 'large']);
+
+//        Cart::add('192ao12', 'Product 1', 1, 9.99);
+//        Cart::add('1239ad0', 'Product 2', 2, 5.95, ['size' => 'large']);
+
+        // Display the content in a View.
+        return view('pages.cart');
     }
 
     /**

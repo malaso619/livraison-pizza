@@ -113,6 +113,7 @@ Route::get('/teste-foreignkey',function(){
 
 Route::get('/home-admin','livraison\CommandeController@index2')->name("path_admin");
 Route::get('/commande-pizza','livraison\CommandeController@index')->name("commande");
-Route::resource('/cart','livraison\CartController');
+//Route::resource('/cart','livraison\CartController');
+Route::get('/cart','livraison\CartController@index')->name('cart_path');
 
 

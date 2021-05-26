@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Livraison\Pizza;
 
+
 class CommandeController extends Controller
 {
     /**
@@ -15,11 +16,11 @@ class CommandeController extends Controller
      */
     public function index()
     {
-        //
-	   /*  return view('admin'); */
-        //$pizza=Pizza::all()->pizza;
 
-       return view('pages.commande');
+
+        $pizza=Pizza::all();
+
+       return view('pages.commande',compact('pizza'));
     }
     public function index2()
     {

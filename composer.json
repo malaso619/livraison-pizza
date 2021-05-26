@@ -7,15 +7,24 @@
         "laravel"
     ],
     "license": "MIT",
+
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/NAMBININA95/LaravelShoppingcart"
+        }
+    ],
     "require": {
         "php": "^7.2.5",
         "bumbummen99/shoppingcart": "^4.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
+        "gloudemans/shoppingcart": "^2.6",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/socialite": "^5.2",
-        "laravel/tinker": "^2.0"
+        "laravel/tinker": "^2.0",
+        "olimortimer/laravelshoppingcart": "^5.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
