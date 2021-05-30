@@ -117,3 +117,20 @@ Route::get('/commande-pizza','livraison\CommandeController@index')->name("comman
 Route::get('/cart','livraison\CartController@index')->name('cart_path');
 
 
+//Apprendre à créer un site ecommerce simple avec laravel version 7
+Route::get('/ecommerce',function(){
+    return view('ecommerce.pages.home');
+})->name('path_ecommerce');
+
+Route::get('/cart','ecommerce\ClientController@cart');
+Route::get('/login','ecommerce\ClientController@login');
+Route::get('/shop','ecommerce\ClientController@shop');
+Route::get('/checkout','ecommerce\ClientController@checkout');
+Route::get('/signup','ecommerce\ClientController@signups');
+
+
+
+
+
+
+
