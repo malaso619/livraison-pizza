@@ -128,6 +128,44 @@ Route::get('/shop','ecommerce\ClientController@shop');
 Route::get('/checkout','ecommerce\ClientController@checkout');
 Route::get('/signup','ecommerce\ClientController@signups');
 
+//dashbord
+Route::get('/tableau-bord','ecommerce\AdminDashbordController@index')->name('tableau_bord');
+Route::get('/list-commande','ecommerce\AdminDashbordController@liste_commande');
+
+//Catégories
+Route::get('/categorie','ecommerce\CategorieController@index');
+Route::get('/edit-categorie/{id}','ecommerce\CategorieController@edit_cate')->name('edit_cate');
+Route::get('/list-categorie','ecommerce\CategorieController@liste_categorie');
+Route::post('/categorie','ecommerce\CategorieController@save_categorie')->name('sav_cate');
+Route::post('/updated-categorie','ecommerce\CategorieController@misejour_categorie')->name('update_cate');
+Route::get('/deleted-categorie/{id}','ecommerce\CategorieController@supprimer_categorie')->name('delete_cate');
+
+//Produit
+Route::get('/produit','ecommerce\ProduitController@index');
+Route::get('/edit-produit/{id}','ecommerce\ProduitController@edit_prod')->name('edit_prod');
+Route::get('/activation-status-produit/{id}','ecommerce\ProduitController@active_prod')->name('active_prod');
+Route::get('/desactivation-status-produit/{id}','ecommerce\ProduitController@desactive_prod')->name('desactive_prod');
+Route::get('/deleted-produit/{id}','ecommerce\ProduitController@delete_prod')->name('delete_prod');
+Route::post('/updated-produit','ecommerce\ProduitController@update_prod')->name('update_prod');
+Route::get('/list-produit','ecommerce\ProduitController@liste_produit');
+Route::post('/produit','ecommerce\ProduitController@save_produit')->name('save_produit');
+
+
+//slider
+Route::get('/slider','ecommerce\SliderController@index');
+Route::get('/list-slider','ecommerce\SliderController@liste_slider');
+Route::post('/slider','ecommerce\SliderController@save_slider')->name('save_slider');
+Route::post('/updated-slider','ecommerce\SliderController@updated_slider')->name('updated_slider');
+Route::get('/edit-slider/{id}','ecommerce\SliderController@edit_slider')->name('edit_slider');
+Route::get('/deleted-slider/{id}','ecommerce\SliderController@deleted_slider')->name('deleted_slider');
+Route::get('/activation-status-slider/{id}','ecommerce\SliderController@activer')->name('activer');
+Route::get('/desactivation-status-slider/{id}','ecommerce\SliderController@desactiver')->name('desactiver');
+
+
+//Test des view sans recours au controlleurs
+
+Route::view('/descri','ecommerce/pages/dashbord/slider');
+Route::view('/datatable','ecommerce/pages/dashbord/ListeData/produit');
 
 
 
