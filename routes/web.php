@@ -118,15 +118,14 @@ Route::get('/cart','livraison\CartController@index')->name('cart_path');
 
 
 //Apprendre à créer un site ecommerce simple avec laravel version 7
-Route::get('/ecommerce',function(){
-    return view('ecommerce.pages.home');
-})->name('path_ecommerce');
-
-Route::get('/cart','ecommerce\ClientController@cart');
-Route::get('/login','ecommerce\ClientController@login');
-Route::get('/shop','ecommerce\ClientController@shop');
+Route::get('/ecommerce','ecommerce\ClientController@home')->name('path_ecommerce');
+Route::get('/cart','ecommerce\ClientController@cart')->name('cart');
+Route::get('/login','ecommerce\ClientController@login')->name('login');
+Route::get('/shop','ecommerce\ClientController@shop')->name('shop');
 Route::get('/checkout','ecommerce\ClientController@checkout');
 Route::get('/signup','ecommerce\ClientController@signups');
+Route::get('/select-par-categorie/{name}','ecommerce\ClientController@selectCategorie')->name('selectCategorie');
+Route::get('/ajout-produit-au-panier/{id}','ecommerce\ClientController@ajoutPanier')->name('ajoutPanier');
 
 //dashbord
 Route::get('/tableau-bord','ecommerce\AdminDashbordController@index')->name('tableau_bord');
