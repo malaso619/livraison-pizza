@@ -19,12 +19,13 @@
         "bumbummen99/shoppingcart": "^4.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
-        "gloudemans/shoppingcart": "^2.6",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
         "laravel/socialite": "^5.2",
         "laravel/tinker": "^2.0",
-        "olimortimer/laravelshoppingcart": "^5.0"
+        "laravel/ui": "2.4",
+        "olimortimer/laravelshoppingcart": "^5.0",
+        "stripe/stripe-php": "3.*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

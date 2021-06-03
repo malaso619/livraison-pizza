@@ -1,0 +1,10 @@
+-For installation require in composer enter these command before : 
+
+		php artisan optimize
+		composer dumpautoload 
+
+		change version of laravel : "laravel/framework": "^8.0",
+
+		php artisan cache:clear  
+		php artisan config:clear
+		composer update
