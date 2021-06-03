@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\ecommerce\CategorieModel;
 use App\Models\ecommerce\ProduitModel;
 use App\Models\ecommerce\SliderModel;
-use App\Cart;
+use App\Cart\Cart;
 use Session;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,13 @@ class ClientController extends Controller
         return view('ecommerce.pages.home',compact('slider','prod'));
     }
     public function cart(){
-        return view('ecommerce.pages.cart');
+        if(!Session::has('cart')){
+            view('ecommerce.pages.cart');
+        }
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        return view('ecommerce.pages.cart', ['products' => $cart->items]);
+
     }
     public function login(){
         return view('ecommerce.pages.login');
@@ -29,6 +35,10 @@ class ClientController extends Controller
         return view('ecommerce.pages.shop',compact('prods','cat'));
     }
     public function checkout(){
+        if(!Session::has('cart')){
+            view('ecommerce.pages.cart');
+        }
+
         return view('ecommerce.pages.checkout');
     }
     public function signups(){
@@ -48,11 +58,41 @@ class ClientController extends Controller
 
         $pros=ProduitModel::find($id);
         $oldCart = Session::has('cart')? Session::get('cart'):null;
-        $cart = new Cart\Cart($oldCart);
+        $cart = new Cart($oldCart);
         $cart->add($pros, $id);
         Session::put('cart', $cart);
-        dd(Session::get('cart'));
+        //dd(Session::get('cart'));
+        return redirect('/shop');
 
+
+    }
+
+    public function modifierPanier($id,Request $request){
+
+        //print('the product id is '.$request->id.' And the product qty is '.$request->quantity);
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->updateQty($id, $request->quantity);//$request->(quantity) est le name de l'input de type number
+        Session::put('cart', $cart);
+
+        //dd(Session::get('cart'));
+        return redirect('/cart');
+
+    }
+
+    public function retirerPanier($id){
+
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+        if(count($cart->items) > 0){
+            Session::put('cart', $cart);
+        }
+        else{
+            Session::forget('cart');
+        }
+        //dd(Session::get('cart'));
+        return redirect('/cart');
 
     }
 }

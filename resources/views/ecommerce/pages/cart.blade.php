@@ -31,50 +31,48 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="text-center">
-                            <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
 
-                            <td class="image-prod"><div class="img" style="background-image:url(images/product-3.jpg);"></div></td>
+                            @if(Session::has('cart'))
 
-                            <td class="product-name">
-                                <h3>Bell Pepper</h3>
-                                <p>Far far away, behind the word mountains, far from the countries</p>
-                            </td>
+                                @foreach($products as $cart)
+                                    <tr class="text-center">
+                                        <td class="product-remove"><a href="{{ route('retirerPanier',$cart['product_id']) }}"><span class="ion-ios-close"></span></a></td>
 
-                            <td class="price">$4.90</td>
-                            <form action="">
-                                <td class="quantity">
-                                    <div class="input-group mb-3">
-                                        <input type="number" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-                                    </div>
-                            </form>
+                                        <td class="image-prod"><div class="img" style="background-image:url({{ asset('storage/uploadsFichierss/ecommerce/imagess/'.$cart['product_image']) }});"></div></td>
+
+                                        <td class="product-name">
+                                            <h3>{{ $cart['product_name'] }}</h3>
+                                            <p>Far far away, behind the word mountains, far from the countries</p>
+                                        </td>
+
+                                        <td class="price">Ar {{ number_format($cart['product_price'] , 2 , ' , ' ,' ') }}</td>
+                                        <form action="{{ route('modifierPanier',$cart['product_id']) }}" method="post">
+                                            @csrf
+                                            <td class="quantity">
+                                                <div class="input-group mb-3">
+                                                    <input type="number" name="quantity" class="quantity form-control input-number" value="{{ $cart['qty'] }}" min="1" max="100" onchange="">
+                                                </div>
+                                                <button class="btn btn-success" type="submit">Modifier</button>
+                                        </form>
 
 
-                            </td>
+                                        </td>
 
-                            <td class="total">$4.90</td>
-                        </tr><!-- END TR-->
+                                        <td class="total">Ar {{ number_format(($cart['qty']*$cart['product_price']),2,',',' ') }}</td>
+                                    </tr><!-- END TR-->
 
-                        <tr class="text-center">
-                            <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
+                                @endforeach
 
-                            <td class="image-prod"><div class="img" style="background-image:url(images/product-4.jpg);"></div></td>
 
-                            <td class="product-name">
-                                <h3>Bell Pepper</h3>
-                                <p>Far far away, behind the word mountains, far from the countries</p>
-                            </td>
+                            @else
+                                    <tr  class="text-center">
 
-                            <td class="price">$15.70</td>
+                                           <td colspan="7"> <h1>Aucun produit est dans la cart </h1> </td>
+                                    </tr>
 
-                            <td class="quantity">
-                                <div class="input-group mb-3">
-                                    <input type="text" name="quantity" class="quantity form-control input-number" value="1" min="1" max="100">
-                                </div>
-                            </td>
+                            @endif
 
-                            <td class="total">$15.70</td>
-                        </tr><!-- END TR-->
+
                         </tbody>
                     </table>
                 </div>
@@ -92,7 +90,7 @@
                         </div>
                     </form>
                 </div>
-                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
+                <p><a href="{{ route('checkout') }}" class="btn btn-primary py-3 px-4">Apply Coupon</a></p>
             </div>
             <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
                 <div class="cart-total mb-3">
@@ -113,30 +111,62 @@
                         </div>
                     </form>
                 </div>
-                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
+                <p><a href="{{ route('checkout') }}" class="btn btn-primary py-3 px-4">Estimate</a></p>
             </div>
             <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
                 <div class="cart-total mb-3">
                     <h3>Cart Totals</h3>
-                    <p class="d-flex">
-                        <span>Subtotal</span>
-                        <span>$20.60</span>
-                    </p>
-                    <p class="d-flex">
-                        <span>Delivery</span>
-                        <span>$0.00</span>
-                    </p>
-                    <p class="d-flex">
-                        <span>Discount</span>
-                        <span>$3.00</span>
-                    </p>
-                    <hr>
-                    <p class="d-flex total-price">
-                        <span>Total</span>
-                        <span>$17.60</span>
-                    </p>
+
+                    @if(Session::has('cart'))
+                        <p class="d-flex">
+                            <span>Subtotal</span>
+                            <span>${{ $sous=number_format(Session::get('cart')->totalPrice,2,',',' ') }}</span>
+                        </p>
+                        <p class="d-flex">
+                            <span>Delivery 10% </span>
+                            <span>${{ $livraison =  number_format((Session::get('cart')->totalPrice * 10 / 100),2,',',' ') }}</span>
+                        </p>
+                        <p class="d-flex">
+                            <span>Discount</span>
+                            <span>$3.00</span>
+                        </p>
+                        <hr>
+                        <p class="d-flex total-price">
+                            <span>Total</span>
+                            <span>$ {{  number_format((Session::get('cart')->totalPrice * 10 / 100 + Session::get('cart')->totalPrice ),2,',',' ') }}</span>
+                        </p>
+                    @else
+
+                        <p class="d-flex">
+                            <span>Subtotal</span>
+                            <span>$ 000,00</span>
+                        </p>
+                        <p class="d-flex">
+                            <span>Delivery 10% </span>
+                            <span>$ 000,00</span>
+                        </p>
+                        <p class="d-flex">
+                            <span>Discount</span>
+                            <span>$ 000,00</span>
+                        </p>
+                        <hr>
+                        <p class="d-flex total-price">
+                            <span>Total</span>
+                            <span>$ 000</span>
+                        </p>
+
+
+                    @endif
+
+
+
                 </div>
-                <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+                @if(Session::get('cart'))
+                    <p><a href="{{ route('checkout') }}" class="btn btn-primary py-3 px-4" >Proceed to Checkout</a></p>
+                @else
+                    <p><a href="{{ route('checkout') }}" class="btn btn-primary py-3 px-4 disabled" disabled="disabled">Proceed to Checkout</a></p>
+                @endif
+
             </div>
         </div>
     </div>

@@ -8,6 +8,8 @@ class Cart{
     public $items = null;
     public $totalQty = 0;
     public $totalPrice = 0;
+//    public $livraison = 0;
+//    public $taxetva = 0;
 
 
     public function __construct($oldCart){
@@ -16,11 +18,13 @@ class Cart{
             $this->items = $oldCart->items;
             $this->totalQty = $oldCart->totalQty;
             $this->totalPrice = $oldCart->totalPrice;
+//            $this->livraison = $oldCart->livraison;
+//            $this->taxetva = $oldCart->taxetva;
         }
 
     }
 
-    public function add($item, $product_id){
+    public function add($item, $product_id){//tva
 
         $storedItem = ['qty' => 0, 'product_id' => 0, 'product_name' => $item->produits_name,
             'product_price' => $item->prix, 'product_image' => $item->image, 'item' =>$item];

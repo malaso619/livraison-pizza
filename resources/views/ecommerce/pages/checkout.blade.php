@@ -105,23 +105,45 @@
                     <div class="col-md-12 d-flex mb-5">
                         <div class="cart-detail cart-total p-3 p-md-4">
                             <h3 class="billing-heading mb-4">Cart Total</h3>
-                            <p class="d-flex">
-                                <span>Subtotal</span>
-                                <span>$20.60</span>
-                            </p>
-                            <p class="d-flex">
-                                <span>Delivery</span>
-                                <span>$0.00</span>
-                            </p>
-                            <p class="d-flex">
-                                <span>Discount</span>
-                                <span>$3.00</span>
-                            </p>
-                            <hr>
-                            <p class="d-flex total-price">
-                                <span>Total</span>
-                                <span>$17.60</span>
-                            </p>
+                            @if(Session::has('cart'))
+                                <p class="d-flex">
+                                    <span>Subtotal</span>
+                                    <span>${{ $sous=number_format(Session::get('cart')->totalPrice,2,',',' ') }}</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Delivery 10% </span>
+                                    <span>${{ $livraison =  number_format((Session::get('cart')->totalPrice * 10 / 100),2,',',' ') }}</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Discount</span>
+                                    <span>$3.00</span>
+                                </p>
+                                <hr>
+                                <p class="d-flex total-price">
+                                    <span>Total</span>
+                                    <span>$ {{  number_format((Session::get('cart')->totalPrice * 10 / 100 + Session::get('cart')->totalPrice ),2,',',' ') }}</span>
+                                </p>
+                            @else
+
+                                <p class="d-flex">
+                                    <span>Subtotal</span>
+                                    <span>$ 000,00</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Delivery 10% </span>
+                                    <span>$ 000,00</span>
+                                </p>
+                                <p class="d-flex">
+                                    <span>Discount</span>
+                                    <span>$ 000,00</span>
+                                </p>
+                                <hr>
+                                <p class="d-flex total-price">
+                                    <span>Total</span>
+                                    <span>$ 000,00</span>
+                                </p>
+
+                            @endif
                         </div>
                     </div>
                     <div class="col-md-12">
