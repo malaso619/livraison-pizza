@@ -9,10 +9,15 @@ class AdminDashbordController extends Controller
 {
     //
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
-        return view('ecommerce.pages.dashbord.index');
+        return view('ecommerce.pages.corona.index');
     }
     public function liste_commande(){
-        return view('ecommerce.pages.dashbord.ListeData.commande');
+        return view('ecommerce.pages.corona.ListeData.commande');
     }
 }

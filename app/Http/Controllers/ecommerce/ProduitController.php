@@ -18,7 +18,7 @@ class ProduitController extends Controller
     }
     public function liste_produit(){
         $prod=ProduitModel::all();
-        return view('ecommerce.pages.dashbord.ListeData.produit',compact('prod'));
+        return view('ecommerce.pages.corona.ListeData.produit',compact('prod'));
     }
     public function save_produit(Request $req){
 

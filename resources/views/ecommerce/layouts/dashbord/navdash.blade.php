@@ -14,20 +14,63 @@
             </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item nav-profile dropdown">
-                <a class="nav-link" href="dashbord/#" data-toggle="dropdown" id="profileDropdown">
-                    <img src="{{ asset('dashbord/images/logo_2H_tech.png') }}" alt="profile"/>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                    <a class="dropdown-item">
-                        <i class="ti-power-off text-primary"></i>
-                        Logout
+                @guest
+                <li class="nav-item nav-profile dropdown">
+                    <a class="nav-link" href="dashbord/#" data-toggle="dropdown" id="profileDropdown">
+                        <img src="{{ asset('dashbord/images/logo_2H_tech.png') }}" alt="profile"/>
                     </a>
-                </div>
-            </li>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                        <a class="dropdown-item">
+                            <i class="ti-power-off text-primary"></i>
+                            Logout
+                        </a>
+                    </div>
+
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+
+                @if (Route::has('register'))
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    </li>
+                @endif
+
+                @else
+
+                <li class="nav-item nav-profile dropdown">
+                    <a class="nav-link" href="dashbord/#" data-toggle="dropdown" id="profileDropdown">
+                        <img src="{{ asset('dashbord/images/logo_2H_tech.png') }}" alt="profile"/> {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+
+                        <a class="dropdown-item">
+                            <i class="ti-power-off text-primary"></i>
+                            {{ Auth::user()->name }}
+                        </a>
+                        <a class="dropdown-item"    href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                            <i class="ti-power-off text-primary"></i>
+                           {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
+
+                    </div>
+                </li>
+
+                @endguest
+
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="ti-layout-grid2"></span>
         </button>
     </div>
 </nav>
+

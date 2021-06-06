@@ -167,6 +167,7 @@ Route::get('/desactivation-status-slider/{id}','ecommerce\SliderController@desac
 
 Route::view('/descri','ecommerce/pages/dashbord/slider');
 Route::view('/datatable','ecommerce/pages/dashbord/ListeData/produit');
+Route::view('/corona','ecommerce/pages/corona/index');
 
 
 
@@ -174,6 +175,7 @@ Route::view('/datatable','ecommerce/pages/dashbord/ListeData/produit');
 
 
 
+//Pour l'authentification laravel
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admnistration-laravel-ecommerce', 'HomeController@index')->name('home_login_dashbord');
