@@ -23,8 +23,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
-                    <a href="{{ asset('dashbord/template/index.html') }}" class="nav-link active">
+                <li class="nav-item">
+                    <a href="{{ url('/tableau-bord') }}" class="nav-link {{ request()->is('tableau-bord')? ' active' : ''}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ asset('dashbord/template/pages/widgets.html') }}" class="nav-link">
+                    <a href="{{ asset('dashbord/template/pages/widgets.html') }}" class="nav-link {{ request()->is('dashbord/template/index.html')? 'active' : ''}} ">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Widgets
@@ -246,6 +246,81 @@
                         </li>
                     </ul>
                 </li>
+
+
+
+                <li class="nav-header">E-commerce</li>
+                <li class="nav-item ">
+                    <a href="{{ asset('dashbord/template/#') }}" class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>
+                            Création
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ asset('dashbord/template/pages/tables/simple.html') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Produits</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ asset('dashbord/template/pages/tables/data.html') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Catégories</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ asset('dashbord/template/pages/tables/jsgrid.html') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Slider</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item {{ request()->is('#')? 'has-treeview' : ''}}">
+                    <a href="{{ url('#') }}" class="nav-link {{ request()->is('list-produit') ||  request()->is('list-categorie') ||  request()->is('list-slider') ||  request()->is('list-commande')? 'active' : ''}}">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>
+                            Listes
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ url('/list-produit') }}" class="nav-link {{ request()->is('list-produit')? 'active' : ''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Produits</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/list-categorie') }}" class="nav-link {{ request()->is('list-categorie')? 'active' : ''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Catégories</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/list-slider') }}" class="nav-link {{ request()->is('list-slider')? 'active' : ''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Slider</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('/list-commande') }}" class="nav-link {{ request()->is('list-commande')? 'active' : ''}}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Commandes</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+
+
+
+
                 <li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
                     <a href="{{ asset('dashbord/template/pages/calendar.html') }}" class="nav-link">

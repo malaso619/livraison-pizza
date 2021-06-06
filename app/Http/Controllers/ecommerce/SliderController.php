@@ -57,7 +57,7 @@ class SliderController extends Controller
 
     public function liste_slider(){
         $slider=SliderModel::get();
-        return view('ecommerce.pages.dashbord.ListeData.slider',compact('slider'));
+        return view('ecommerce.pages.corona.ListeData.slider',compact('slider'));
     }
 
     public function updated_slider(Request $req){

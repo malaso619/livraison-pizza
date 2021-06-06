@@ -15,7 +15,7 @@ class CategorieController extends Controller
 
     public function liste_categorie(){
         $categories=CategorieModel::get();
-        return view('ecommerce.pages.dashbord.ListeData.categorie')->with('categories',$categories);
+        return view('ecommerce.pages.corona.ListeData.categorie')->with('categories',$categories);
     }
 
     public function save_categorie(Request $req){
