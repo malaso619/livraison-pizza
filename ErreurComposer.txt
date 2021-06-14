@@ -10,3 +10,5 @@
  3--"bumbummen99/shoppingcart": "^4.0",
 
  4-Composer remove pakage to uninstall
+
+5-npm update -g to update all file in package.json

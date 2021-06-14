@@ -260,19 +260,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ asset('dashbord/template/pages/tables/simple.html') }}" class="nav-link">
+                            <a href="{{ route('path_prod') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Produits</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ asset('dashbord/template/pages/tables/data.html') }}" class="nav-link">
+                            <a href="{{ route('path_cate') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Catégories</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ asset('dashbord/template/pages/tables/jsgrid.html') }}" class="nav-link">
+                            <a href="{{ route('path_slider') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Slider</p>
                             </a>

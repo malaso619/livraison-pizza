@@ -1,48 +1,89 @@
-@extends('ecommerce.layouts.dashbord.dash')
+@extends('ecommerce.layouts.corona.dash')
+
+@section('custom-header')
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('dashbord/template/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dashbord/template/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <!-- Bootstrap4 Duallistbox -->
+    <link rel="stylesheet" href="{{ asset('dashbord/template/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
+
+@endsection
+
 @section('content')
-<div class="main-panel">
-    <div class="content-wrapper">
-        <div class="row grid-margin">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Catégorie</h4>
-                        @if( Session::has('status') )
-                            <div class="alert alert-success">
-                                {{ Session::get('status') }}
-                            </div>
 
-                        @endif
+    <section class="content" style="margin-top: 70px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Categories</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form role="form" class="cmxform" method="post" id="commentForm" action="{{ route('sav_cate')  }}">
+                            <div class="card-body">
+                                @if( Session::has('status') )
+                                    <div class="alert alert-success">
+                                        {{ Session::get('status') }}
+                                    </div>
 
-                        @if( count($errors)>0 )
-                            <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach($errors->all() as $errs)
-                                            <li>{{ $errs }}</li>
-                                        @endforeach
-                                    </ul>
-                            </div>
-                        @endif
-                        <form class="cmxform" method="post" id="commentForm" action="{{ route('sav_cate') }}">
-                            @csrf
-                            <fieldset>
+                                @endif
+
+                                @if( count($errors)>0 )
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach($errors->all() as $errs)
+                                                <li>{{ $errs }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                @csrf
                                 <div class="form-group">
-                                    <label for="cname">Catégorie</label>
-                                    <input id="cname" class="form-control" name="categories" minlength="1" type="text">
+                                    <label for="cname">Categories</label>
+                                    <input id="cname" value="{{ old('categories') }}" class="form-control" name="categories" minlength="2" type="text">
                                 </div>
-                                <input class="btn btn-primary" type="submit" value="Ajouter">
-                            </fieldset>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Ajouter</button>
+                            </div>
                         </form>
                     </div>
                 </div>
+
             </div>
         </div>
-    </div>
-</div>
+    </section>
+
 @endsection
 
 @section('custom-js')
-    <!-- Custom js for this page-->
-{{--    <script src="dashbord/js/form-validation.js"></script>--}}
-{{--    <script src="dashbord/js/bt-maxLength.js"></script>--}}
+    <script src="{{ asset('dashbord/template/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('dashbord/template/plugins/select2/js/select2.full.min.js') }}"></script>
+    <!-- Bootstrap4 Duallistbox -->
+    <script src="{{ asset('plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js') }} "></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            bsCustomFileInput.init();
+            // ('.select2').select2();
+            //Initialize Select2 Elements
+            $('.select2').select2({
+                theme: 'bootstrap4'
+            })
+        });
+        $(function () {
+            // $('.select2').select2();
+        })
+    </script>
 @endsection
+
+
+
+
+

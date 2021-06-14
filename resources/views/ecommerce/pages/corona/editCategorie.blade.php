@@ -1,43 +1,46 @@
-@extends('ecommerce.layouts.dashbord.dash')
+@extends('ecommerce.layouts.corona.dash')
 @section('content')
-    <div class="main-panel">
-        <div class="content-wrapper">
-            <div class="row grid-margin">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Catégorie</h4>
-                            @if( count($errors)>0 )
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach($errors->all() as $errs)
-                                            <li>{{ $errs }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                            <form class="cmxform" id="commentForm" method="post" action="{{ route('update_cate') }}">
-                                @csrf
-{{--                                @method('PUT')--}}
-                                <fieldset>
-                                    <input type="hidden" name="id_cate" id="" value="{{ $categorie->id_cate }}">
-                                    <div class="form-group">
-                                        <label for="cname">Catégorie</label>
-                                        <input id="cname" class="form-control" name="name_categorie" minlength="2" type="text" value="{{ $categorie->categories }}">
-                                    </div>
-                                    <input class="btn btn-primary" type="submit" value="Modifier">
-                                </fieldset>
-                            </form>
+
+    <section class="content" style="margin-top: 70px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- general form elements -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Categories</h3>
                         </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form role="form" class="cmxform" method="post" id="commentForm" action="{{ route('update_cate')  }}">
+                            <div class="card-body">
+                                @if( count($errors)>0 )
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach($errors->all() as $errs)
+                                                <li>{{ $errs }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                @csrf
+
+                                    <input type="hidden" name="id_cate" value="{{ $categorie->id_cate }}">
+                                <div class="form-group">
+                                    <label for="cname">Categories</label>
+                                    <input id="cname" value="{{ $categorie->categories }}" class="form-control" name="name_categorie" minlength="2" type="text">
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Modifier</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
+
             </div>
         </div>
-    </div>
-@endsection
-
-@section('custom-js')
-    <!-- Custom js for this page-->
-{{--        <script src="dashbord/js/form-validation.js"></script>--}}
-{{--        <script src="dashbord/js/bt-maxLength.js"></script>--}}
+    </section>
 @endsection

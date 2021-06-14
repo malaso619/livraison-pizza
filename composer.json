@@ -25,6 +25,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.4",
         "olimortimer/laravelshoppingcart": "^5.0",
+        "rebing/graphql-laravel": "^7.2",
         "stripe/stripe-php": "3.*"
     },
     "require-dev": {

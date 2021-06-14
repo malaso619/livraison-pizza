@@ -134,7 +134,7 @@ Route::get('/tableau-bord','ecommerce\AdminDashbordController@index')->name('tab
 Route::get('/list-commande','ecommerce\AdminDashbordController@liste_commande');
 
 //Catégories
-Route::get('/categorie','ecommerce\CategorieController@index');
+Route::get('/categorie','ecommerce\CategorieController@index')->name('path_cate');
 Route::get('/edit-categorie/{id}','ecommerce\CategorieController@edit_cate')->name('edit_cate');
 Route::get('/list-categorie','ecommerce\CategorieController@liste_categorie');
 Route::post('/categorie','ecommerce\CategorieController@save_categorie')->name('sav_cate');
@@ -142,7 +142,7 @@ Route::post('/updated-categorie','ecommerce\CategorieController@misejour_categor
 Route::get('/deleted-categorie/{id}','ecommerce\CategorieController@supprimer_categorie')->name('delete_cate');
 
 //Produit
-Route::get('/produit','ecommerce\ProduitController@index');
+Route::get('/produit','ecommerce\ProduitController@index')->name('path_prod');
 Route::get('/edit-produit/{id}','ecommerce\ProduitController@edit_prod')->name('edit_prod');
 Route::get('/activation-status-produit/{id}','ecommerce\ProduitController@active_prod')->name('active_prod');
 Route::get('/desactivation-status-produit/{id}','ecommerce\ProduitController@desactive_prod')->name('desactive_prod');
@@ -153,7 +153,7 @@ Route::post('/produit','ecommerce\ProduitController@save_produit')->name('save_p
 
 
 //slider
-Route::get('/slider','ecommerce\SliderController@index');
+Route::get('/slider','ecommerce\SliderController@index')->name('path_slider');
 Route::get('/list-slider','ecommerce\SliderController@liste_slider');
 Route::post('/slider','ecommerce\SliderController@save_slider')->name('save_slider');
 Route::post('/updated-slider','ecommerce\SliderController@updated_slider')->name('updated_slider');

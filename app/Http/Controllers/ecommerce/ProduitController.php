@@ -14,7 +14,7 @@ class ProduitController extends Controller
     public function index(){
         //$cat=CategorieModel::all();
         $cat=CategorieModel::all()->pluck('categories');//plug nous permet de specifier quel champ qu'on doit utiliser dans la bdd
-        return view('ecommerce.pages.dashbord.produit')->withCat($cat);
+        return view('ecommerce.pages.corona.produit')->withCat($cat);
     }
     public function liste_produit(){
         $prod=ProduitModel::all();
@@ -121,7 +121,7 @@ class ProduitController extends Controller
         $upcat=CategorieModel::where('categories',$prod->categories)->get();
         $allcat=CategorieModel::all();
         $plk=CategorieModel::all()->pluck('categories','categories');
-        return view('ecommerce.pages.dashbord.editProduit',compact('upcat','prod','allcat','plk'));
+        return view('ecommerce.pages.corona.editProduit',compact('upcat','prod','allcat','plk'));
     }
 
 

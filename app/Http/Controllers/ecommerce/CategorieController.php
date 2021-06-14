@@ -10,7 +10,7 @@ class CategorieController extends Controller
 {
     //
     public function index(){
-        return view('ecommerce.pages.dashbord.categorie');
+        return view('ecommerce.pages.corona.categorie');
     }
 
     public function liste_categorie(){
@@ -40,7 +40,7 @@ class CategorieController extends Controller
 
     public function edit_cate($id){
         $upcat=CategorieModel::findOrFail($id);
-        return view('ecommerce.pages.dashbord.editCategorie')->with('categorie',$upcat);
+        return view('ecommerce.pages.corona.editCategorie')->with('categorie',$upcat);
     }
     public function supprimer_categorie($id){
         $upcat=CategorieModel::find($id);

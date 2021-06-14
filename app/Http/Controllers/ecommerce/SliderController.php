@@ -12,7 +12,7 @@ class SliderController extends Controller
     //
 
     public function index(){
-        return view('ecommerce.pages.dashbord.slider');
+        return view('ecommerce.pages.corona.slider');
     }
 
     public function save_slider(Request $req){
@@ -100,7 +100,7 @@ class SliderController extends Controller
     }
     public function edit_slider($id){
         $slide=SliderModel::findOrFail($id);
-        return view('ecommerce.pages.dashbord.editSlider')->with('slide',$slide);
+        return view('ecommerce.pages.corona.editSlider')->with('slide',$slide);
 
     }
     public function deleted_slider($id){
