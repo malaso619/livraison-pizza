@@ -23,9 +23,11 @@ class Commande extends Model
 		'DATECOMMANDE',
 		'LATITUDE',
 		'LONGITUDE',
-		'ADRESSEONE',//'slug'
-		'RETARD',//'slug'
-		'ADRESSETWO'];//'slug'
+		'ADRESSEONE',
+		'RETARD',
+		'ADRESSETWO'];
+
+
 	public $timestamps=false;
 	protected $dates=['DATECOMMANDE'];
 

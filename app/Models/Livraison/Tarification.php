@@ -13,7 +13,7 @@ class Tarification extends Model
 	protected $fillable=[
 		'TAILLE',
 		'COEFFICIENT'
-		];//'slug'
+		];
 	public $timestamps=false;
 
 	public function commande(){

@@ -6,9 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class SliderModel extends Model
 {
-    //
-
-
     protected $table="slider";
     protected $primaryKey="id_slider";
     public $incrementing=true;

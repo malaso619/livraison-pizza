@@ -14,10 +14,4 @@ class ProduitModel extends Model
     protected $fillable=['produits_name','status','prix','image','categories'];
     public $timestamps=false;
 
-  /*  public $diretoryImages='./storage/app/public/uploadsFichierss/ecommerce/imagess/';
-
-    public function getImageAttribute($value)
-    {
-        return $this->directoryImages.$value;
-    }*/
 }

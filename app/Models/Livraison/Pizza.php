@@ -14,9 +14,8 @@ class Pizza extends Model
 		'NOMPIZZA',
 		'PRIX',
 		'IMAGEPIZZA',
-		];//'slug'
+		];
 	public $timestamps=false;
-
 	public function ingredients(){
 		return $this->belongsToMany('App\Models\Livraison\Ingredient',
             'pizzaingredient','NOMPIZZA'

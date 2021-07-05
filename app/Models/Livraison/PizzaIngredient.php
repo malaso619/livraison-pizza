@@ -12,7 +12,7 @@ class PizzaIngredient extends Pivot
 	protected $fillable=[
 		'ID',
 		'NOMPIZZA',
-		];//'slug'
+		];
 	public $incrementing=true;
 
 }

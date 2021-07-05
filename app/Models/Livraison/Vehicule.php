@@ -16,7 +16,7 @@ class Vehicule extends Model
 		'MARQUE',
 		'TYPE',
 		'IMAGES',
-		];//'slug'
+		];
 	public $timestamps=false;
 
 

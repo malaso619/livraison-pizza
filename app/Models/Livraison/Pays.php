@@ -10,10 +10,9 @@ class Pays extends Model
 	protected $primaryKey="ID";
 	protected $fillable=[
 		'PAYS',
-		];//'slug'
+		];
 	public $timestamps=false;
 	public $incrementing=true;
-
 	public function commande(){
 		return $this->hasOne('App\Models\Livraison\Commande','ID_PAYS','ID');
 	}

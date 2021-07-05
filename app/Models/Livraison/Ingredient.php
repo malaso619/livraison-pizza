@@ -10,10 +10,9 @@ class Ingredient extends Model
 	protected $table="ingredient";
 	protected $primaryKey="ID";
 	public $incrementing=true;
-	//protected $keyType="string";
 	protected $fillable=[
 		'INGREDIENTS',
-		];//'slug'
+		];
 	public $timestamps=false;
 
 	public function pizzas(){
